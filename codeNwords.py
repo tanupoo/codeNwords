@@ -17,6 +17,8 @@ class CodeWordMap():
             3: both (default)
         """
         map_c2w = open(word_file).read().splitlines()
+        self.version = map_c2w[0]   # take the version.
+        map_c2w = map_c2w[1:]   # skip the first line.
         max_num = pow(10,nb_digits)-1
         if len(map_c2w) <= max_num:
             raise ValueError("ERROR: the number of words is not enough "
@@ -87,7 +89,8 @@ class CodeWordMap():
             n = randint(0,self.max_num)
             code_w.append(self.map_c2w[n])
             code_n.append(str(n).rjust(self.nb_digits,"0"))
-        return { "code": "-".join(code_n), "words": "-".join(code_w) }
+        return { "code": "-".join(code_n), "words": "-".join(code_w),
+                "version": self.version }
 
 if __name__ == "__main__":
     from argparse import ArgumentParser
