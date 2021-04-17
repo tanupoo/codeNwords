@@ -32,6 +32,9 @@ class CodeWordMap():
         self.max_num = max_num
         # make maps.
         map_c2w = map_c2w[:max_num+1]
+        if map_type not in [1,2,3]:
+            raise ValueError("ERROR: map_type must be either 1,2,or 3, "
+                             f"but {map_type}.")
         if map_type in [1,3]:
             self.map_c2w = map_c2w[:max_num+1]
         if map_type in [2,3]:
