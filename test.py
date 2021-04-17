@@ -1,3 +1,4 @@
+# XXX need to use unittest.
 
 word_file = "word_list.txt"
 
@@ -25,3 +26,8 @@ words = cwm.code2words(code)
 print(f"{code} -> {words}: result {words==expected}: expected {expected}")
 if words != expected:
     raise ValueError(f"{words} != {expected}")
+
+try:
+    codeNwords.CodeWordMap(word_file, map_type=0)
+except ValueError:
+    print("caught ValueError for map_type check.")
