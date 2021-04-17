@@ -3,7 +3,7 @@ codeNwords
 
 ハイフンでN個のブロックに区切られたM桁の数字のコードを
 N個の単語で表現するだけのプログラムです。
-はい、なんちゃって[https://what3words.com/](what3words)です。
+はい、なんちゃって[what3words](https://what3words.com/)です。
 
 単語数が不十分なのでMの最大値は4になります(後述)。
 
@@ -34,9 +34,19 @@ N個の単語で表現するだけのプログラムです。
 
 ## APIとサンプル
 
-[https://github.com/tanupoo/codeNwords/blob/main/test.py]
+- [test.py](https://github.com/tanupoo/codeNwords/blob/main/test.py)
 
-map_typeを1(CODE2WORDS)または2(WORDS2CODE)にすると、
+```python
+import codeNwords
+
+cwm = codeNwords.CodeWordMap(word_file)
+
+ret = cwm.gencode()
+print(cwm.code2words(ret["code"]))
+print(cwm.words2code(ret["words"]))
+```
+
+`CodeWordMap()`の引数`map_type`を1(CODE2WORDS)または2(WORDS2CODE)にすると、
 少しだけメモリを節約できます。
 
 ## Usage
