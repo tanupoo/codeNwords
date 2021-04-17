@@ -3,12 +3,31 @@ codeNwords
 
 ハイフンでN個のブロックに区切られたM桁の数字のコードを
 N個の単語で表現するだけのプログラムです。
-はい、なんちゃって[what3words](https://what3words.com/)です。
-
 単語数が不十分なのでMの最大値は4になります(後述)。
 
 ブロック数を増やせば全体の桁数は増やせます。
 伝える単語数が増えますがおそらくは使用上大きな問題にはならないかと思います。
+
+なんちゃって[what3words](https://what3words.com/)です。
+とあるプロジェクトで必要だったので勢いで作りました。
+特許とか調べてないのでもし問題がありそうでしたらご連絡下さい。
+
+## APIとサンプル
+
+- [test.py](https://github.com/tanupoo/codeNwords/blob/main/test.py)
+
+```python
+import codeNwords
+
+cwm = codeNwords.CodeWordMap(word_file)
+
+ret = cwm.gencode()
+print(cwm.code2words(ret["code"]))
+print(cwm.words2code(ret["words"]))
+```
+
+`CodeWordMap()`の引数`map_type`を1(CODE2WORDS)または2(WORDS2CODE)にすると、
+少しだけメモリを節約できます。
 
 ## CLIでの使い方
 
@@ -31,23 +50,6 @@ N個の単語で表現するだけのプログラムです。
 % python codeNwords.py word_list.txt -w '497-892-234'
 さわぐ-もでる-くつした
 ```
-
-## APIとサンプル
-
-- [test.py](https://github.com/tanupoo/codeNwords/blob/main/test.py)
-
-```python
-import codeNwords
-
-cwm = codeNwords.CodeWordMap(word_file)
-
-ret = cwm.gencode()
-print(cwm.code2words(ret["code"]))
-print(cwm.words2code(ret["words"]))
-```
-
-`CodeWordMap()`の引数`map_type`を1(CODE2WORDS)または2(WORDS2CODE)にすると、
-少しだけメモリを節約できます。
 
 ## Usage
 
