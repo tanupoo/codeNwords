@@ -70,7 +70,7 @@ make_word_list.py を用いて、
 口頭で伝えにくと思われる単語を除外しました。
 
 ```
-% python make_word_list.py VDLJ_Ver1_0_International-Students.xlsx -o word_list.txt
+% python make_word_list.py VDLJ_Ver1_0_International-Students.xlsx -r 30000
 ```
 
 留学生用語彙ランク3000までで約1000語用意できます。
