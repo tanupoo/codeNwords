@@ -11,28 +11,29 @@ N個の単語で表現するだけのプログラムです。
 
 ## CLIでの使い方
 
+- コードとN単語のペア生成の例
+
 ```
 % python codeNwords.py word_list.txt
-{'code': '500-897-234', 'words': 'さわぐ-もでる-くつした'}
-
-% python codeNwords.py word_list.txt
-{'code': '324-243-133', 'words': 'たてる-ゆうはん-ごめん'}
+{'code': '398-292-128', 'words': 'あいさつ-うける-つめたい', 'version': '# ver. 2021-04-17T21:05:23.671706'}
 
 % python codeNwords.py word_list.txt --nb-blocks 4 --nb-digits 4
-{'code': '6197-0673-6913-4043', 'words': 'ふりかかる-せいど-かくらん-あにめ'}
+{'code': '8015-0383-7595-3722', 'words': 'らいふる-ふえる-しきてん-りんしょう', 'version': '# ver. 2021-04-17T21:05:23.671706'}
 ```
+
+- コードとN単語の変換の例
 
 ```
 % python codeNwords.py word_list.txt -c 'さわぐ-もでる-くつした'
-500-897-234
+497-892-234
 
-% python codeNwords.py word_list.txt -w '324-243-133'
-たてる-ゆうはん-ごめん
+% python codeNwords.py word_list.txt -w '497-892-234'
+さわぐ-もでる-くつした
 ```
 
 ## APIとサンプル
 
-[test.py]
+[https://github.com/tanupoo/codeNwords/blob/main/test.py]
 
 map_typeを1(CODE2WORDS)または2(WORDS2CODE)にすると、
 少しだけメモリを節約できます。
