@@ -83,10 +83,10 @@ class CodeWordMap():
         """
         code_w = []
         code_n = []
-        for _ in range(3):
-            n = randint(0,999)
+        for _ in range(self.nb_blocks):
+            n = randint(0,self.max_num)
             code_w.append(self.map_c2w[n])
-            code_n.append(str(n).rjust(3,"0"))
+            code_n.append(str(n).rjust(self.nb_digits,"0"))
         return { "code": "-".join(code_n), "words": "-".join(code_w) }
 
 if __name__ == "__main__":
