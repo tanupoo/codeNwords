@@ -5,31 +5,7 @@ import xlrd
 import re
 import pykakasi
 
-ng_words = [
-        # ネガティブワード
-        "ジサツ",
-        "ビョウキ",
-        "ニュウイン",
-        "タイホ",
-        "シンパイ",
-        "テンカン",
-        "セッショク",
-        "リコン",
-        "サツジン",
-        "ドロボウ",
-        "ジャマ",
-        "ジシン",
-        "キケン",
-        # ポジティブワード
-        "ケッコン",
-        "コイビト",
-        "シュッサン",
-        "ゲンキ",
-        "ニュウガク",
-        "オヤジ",
-        "オンナ",
-        "オトコ",
-        ]
+NG_WORD_FILE = "ng_word_list.txt"
 
 stat = {
         "nb_short_word": 0,
@@ -49,7 +25,7 @@ re_hinshi = re.compile("^(名詞|動詞|形容詞).*")
 #re_hinshi = re.compile("^(名詞|形容詞).*")
 re_confuse1 = re.compile("[ヲーズヅ]")
 re_confuse2 = re.compile("[オコソトノホモヨロ][ウオ]")
-re_sensitive = re.compile("({})".format("|".join(ng_words)))
+re_sensitive = None # create later.
 
 def getopts():
     from argparse import ArgumentParser
@@ -72,12 +48,17 @@ def getopts():
 
 def main():
     opt = getopts()
-    xls_wb = xlrd.open_workbook(opt.base_dict)
+    # reading vocabulary database.
     # assuming the dict is "VDLJ_Ver1_0_International-Students.xlsx"
+    # the first line is the header. needs to skip 1 line.
+    xls_wb = xlrd.open_workbook(opt.base_dict)
     xls_sheet = xls_wb.sheet_by_index(1)
     rows = xls_sheet.get_rows()
-    # skip 1 line.
     row = rows.__next__()
+    # read ng word list.
+    ng_words = open(NG_WORD_FILE).read().splitlines()
+    ng_words = filter(lambda s: '#' not in s and len(s) > 0, ng_words)
+    re_sensitive = re.compile("({})".format("|".join(ng_words)))
     # open output file.
     if opt.output_file:
         ofd = open(opt.output_file, "w")
