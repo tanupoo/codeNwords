@@ -4,6 +4,7 @@ import sys
 import xlrd
 import re
 import pykakasi
+from datetime import datetime
 
 NG_WORD_FILE = "ng_word_list.txt"
 
@@ -127,6 +128,7 @@ def main():
         for k,v in stat.items():
             print(f"{k}: {v}", file=sys.stderr)
     else:
+        print(f"# ver. {datetime.now().isoformat()}", file=ofd)
         for k in wdb.keys():
             print(k, file=ofd)
 
