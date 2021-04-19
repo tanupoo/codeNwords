@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
-from random import randint
+import random
+from datetime import datetime
+import hashlib
 
 CODE2WORDS = 1
 WORDS2CODE = 2
@@ -81,6 +83,22 @@ class CodeWordMap():
             code_w.append(self.map_c2w[num])
         return "-".join(code_w)
 
+    def basen(self, n: int, base: int) -> list:
+        print(base)
+        if base < 2:
+            raise ValueError("base must be > 1")
+        d = []
+        while n >= base:
+            n,k = n//base,n%base
+            d.append(k)
+        d.append(n)
+        return list(reversed(d))
+
+    def gencodebase(self) -> list:
+        n = hashlib.sha1(int(datetime.timestamp(datetime.now()) +
+                             random.random()*1E15).to_bytes(8,"big")).digest()
+        return self.basen(int.from_bytes(n,"big"), base=self.max_num+1)
+
     def gencode(self) -> (str, str):
         """
         generating a set of code and N words.
@@ -88,8 +106,7 @@ class CodeWordMap():
         """
         code_w = []
         code_n = []
-        for _ in range(self.nb_blocks):
-            n = randint(0,self.max_num)
+        for n in self.gencodebase()[-self.nb_blocks:]:
             code_w.append(self.map_c2w[n])
             code_n.append(str(n).rjust(self.nb_digits,"0"))
         return { "code": "-".join(code_n), "words": "-".join(code_w),
