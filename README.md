@@ -35,19 +35,20 @@ print(cwm.words2code(ret["words"]))
 
 ```
 % python codeNwords.py word_list.txt
-{'code': '398-292-128', 'words': 'あいさつ-うける-つめたい', 'version': '# ver. 2021-04-17T21:05:23.671706'}
+{'code': '6812-9567-1599', 'words': 'ちゅうがた-すたじあむ-すぺいん', 'version': '# ver.2021-04-20T13:05:25'}
 
-% python codeNwords.py word_list.txt --nb-blocks 4 --nb-digits 4
-{'code': '8015-0383-7595-3722', 'words': 'らいふる-ふえる-しきてん-りんしょう', 'version': '# ver. 2021-04-17T21:05:23.671706'}
+% python codeNwords.py word_list.txt --nb-blocks=4 --nb-digits 3
+1000
+{'code': '256-108-217-849', 'words': 'わいしゃつ-あかい-はがき-きょうどう', 'version': '# ver.2021-04-20T13:05:25'}
 ```
 
 - コードとN単語の変換の例
 
 ```
-% python codeNwords.py word_list.txt -c 'さわぐ-もでる-くつした'
-497-892-234
+% python codeNwords.py word_list.txt -c さわぐ-もでる-くつした
+0500-0894-0238
 
-% python codeNwords.py word_list.txt -w '497-892-234'
+% python codeNwords.py word_list.txt -w 0500-0894-0238
 さわぐ-もでる-くつした
 ```
 
@@ -71,7 +72,7 @@ optional arguments:
   --nb-blocks NB_BLOCKS, -b NB_BLOCKS
                         specify the number of blocks. (default: 3)
   --nb-digits NB_DIGITS, -g NB_DIGITS
-                        specify the number of digits in a block. (default: 3)
+                        specify the number of digits in a block. (default: 4)
 ```
 
 ## 辞書
