@@ -62,7 +62,7 @@ class CodeWordMap():
             if n is None:
                 raise ValueError(f"ERROR: the word {cw} doesn't exist.")
             code_n.append(n)
-        return "-".join([str(n).rjust(3,"0") for n in code_n])
+        return "-".join([str(n).rjust(self.nb_digits,"0") for n in code_n])
 
     def code2words(self, code: str) -> str:
         """
