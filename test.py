@@ -13,16 +13,16 @@ print(cwm.code2words(ret["code"]))
 print(cwm.words2code(ret["words"]))
 
 print("## conversion")
-words = "さわぐ-もでる-くつした"
-expected = "497-892-234"
-code = cwm.words2code(words)
+words = "ちゅうがた-すたじあむ-すぺいん"
+expected = "6812-9567-1599"
+code = cwm.words2code(words)["code"]
 print(f"{words} -> {code}: result {code==expected}: expected {expected}")
 if code != expected:
     raise ValueError(f"{code} != {expected}")
 
-code = "324-243-133"
-expected = "たてる-ゆうはん-ごめん"
-words = cwm.code2words(code)
+code = "0324-0243-0133"
+expected = "わらう-しゅくだい-よろしい"
+words = cwm.code2words(code)["words"]
 print(f"{code} -> {words}: result {words==expected}: expected {expected}")
 if words != expected:
     raise ValueError(f"{words} != {expected}")
