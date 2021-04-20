@@ -61,8 +61,8 @@ class CodeWordMap():
             n = self.map_w2c.get(cw)
             if n is None:
                 raise ValueError(f"ERROR: the word {cw} doesn't exist.")
-            code_n.append(n)
-        return "-".join([str(n).rjust(self.nb_digits,"0") for n in code_n])
+            code_n.append(str(n).rjust(self.nb_digits,"0"))
+        return { "code": "-".join(code_n), "version": self.version }
 
     def code2words(self, code: str) -> str:
         """
@@ -81,10 +81,9 @@ class CodeWordMap():
                 raise ValueError("ERROR: a code in a block must be less "
                                  f"than {1+self.max_num}.")
             code_w.append(self.map_c2w[num])
-        return "-".join(code_w)
+        return { "words": "-".join(code_w), "version": self.version }
 
     def basen(self, n: int, base: int) -> list:
-        print(base)
         if base < 2:
             raise ValueError("base must be > 1")
         d = []
