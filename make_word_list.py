@@ -6,8 +6,6 @@ import re
 import pykakasi
 from datetime import datetime
 
-NG_WORD_FILE = "ng_word_list.txt"
-
 stat = {
         "nb_short_word": 0,
         "nb_long_word": 0,
@@ -40,6 +38,9 @@ def getopts():
                     help="specify the word rank.")
     ap.add_argument("-s", action="store_true", dest="show_stat",
                     help="specify to show statistics.")
+    ap.add_argument("-u", action="store", dest="ng_words",
+                    default="unsuitable_words.txt",
+                    help="specify a filename for unsuitable words.")
     ap.add_argument("-o", action="store", dest="output_file",
                     help="specify a filename to be stored the output.")
     ap.add_argument("--exclude-katakana", action="store_true",
@@ -57,7 +58,7 @@ def main():
     rows = xls_sheet.get_rows()
     row = rows.__next__()
     # read ng word list.
-    ng_words = open(NG_WORD_FILE).read().splitlines()
+    ng_words = open(opt.ng_words).read().splitlines()
     ng_words = filter(lambda s: '#' not in s and len(s) > 0, ng_words)
     re_sensitive = re.compile("({})".format("|".join(ng_words)))
     # open output file.
