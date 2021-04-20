@@ -76,6 +76,9 @@ class CodeWordMap():
                              f"{len(code_n)}(given)!={self.nb_blocks}.")
         code_w = []
         for n in code_n:
+            if len(n) < self.nb_digits:
+                raise ValueError("ERROR: nb_digits doesn't match the given "
+                                 f"code len, {n}(given)!={self.nb_digits}.")
             num = int(n)
             if num > self.max_num:
                 raise ValueError("ERROR: a code in a block must be less "
