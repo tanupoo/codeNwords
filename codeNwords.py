@@ -10,7 +10,7 @@ BOTH = 3
 
 class CodeWordMap():
 
-    def __init__(self, word_file: str, nb_digits: int=3, nb_blocks: int=3,
+    def __init__(self, word_file: str, nb_digits: int=4, nb_blocks: int=3,
                  map_type: int=3):
         """
         map_type:
@@ -129,7 +129,7 @@ if __name__ == "__main__":
                     type=int, default=3,
                     help="specify the number of blocks.")
     ap.add_argument("--nb-digits", "-g", action="store", dest="nb_digits",
-                    type=int, default=3,
+                    type=int, default=4,
                     help="specify the number of digits in a block.")
     opt = ap.parse_args()
     if opt.code2words:
