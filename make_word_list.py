@@ -36,7 +36,7 @@ def getopts():
             formatter_class=ArgumentDefaultsHelpFormatter)
     ap.add_argument("base_dict", help="specify the base dictionary.")
     ap.add_argument("-r", action="store", dest="word_rank",
-                    type=int, default=3000,
+                    type=int, default=30000,
                     help="specify the word rank.")
     ap.add_argument("-s", action="store_true", dest="show_stat",
                     help="specify to show statistics.")
@@ -128,7 +128,8 @@ def main():
         for k,v in stat.items():
             print(f"{k}: {v}", file=sys.stderr)
     else:
-        print(f"# ver. {datetime.now().isoformat()}", file=ofd)
+        print(f"# ver.{datetime.now().isoformat(timespec='seconds')}",
+              file=ofd)
         for k in wdb.keys():
             print(k, file=ofd)
 
