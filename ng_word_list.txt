@@ -1,14 +1,19 @@
-# negative word
+# ver. 2021-04-19-20
+# The words are not suitable to speak it aloud and to tell it the other party.
 ウンコ
 ウンチ
 キケン
+サイゴ
 ジサツ
 ジシン
 ジャマ
+セイシ
 タイホ
+ランシ
 リコン
 オシッコ
 オッパイ
+カンセン
 サイバン
 サツジン
 シツレン
@@ -18,17 +23,16 @@
 テンカン
 ドロボウ
 ビョウキ
+ムショク
 シツギョウ
 セッショク
 ニュウイン
 
-# non negative word, but maybe sensitive.
-オトコ
-オヤジ
-オンナ
+# The words are maybe sensitive for infectious diseases about life and death .
 ゲンキ
 ケッコン
 コイビト
+ジュセイ
 シュッサン
-ニュウガク
 ソツギョウ
+ニュウガク
