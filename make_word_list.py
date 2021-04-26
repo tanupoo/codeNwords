@@ -129,8 +129,7 @@ def main():
         for k,v in stat.items():
             print(f"{k}: {v}", file=sys.stderr)
     else:
-        print(f"# ver.{datetime.now().isoformat(timespec='seconds')}",
-              file=ofd)
+        print(f"# ver. {datetime.now().strftime('%Y-%m-%d-%H:%M:%S')}", file=ofd)
         for k in wdb.keys():
             print(k, file=ofd)
 
