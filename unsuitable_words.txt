@@ -1,7 +1,10 @@
-# ver. 2021-04-19-20
+# ver. 2021-04-26-19
 # The words are not suitable to speak it aloud and to tell it the other party.
+アクイ
 ウンコ
 ウンチ
+オワル
+キエル
 キケン
 サイゴ
 ジサツ
@@ -9,8 +12,11 @@
 ジャマ
 セイシ
 タイホ
+ツライ
+ヌスム
 ランシ
 リコン
+ワルイ
 オシッコ
 オッパイ
 カンセン
@@ -27,12 +33,18 @@
 シツギョウ
 セッショク
 ニュウイン
+ビョウイン
 
 # The words are maybe sensitive for infectious diseases about life and death .
+ウツル
 ゲンキ
+コマル
+セイキ
+ウマレル
 ケッコン
 コイビト
 ジュセイ
+スクナイ
 シュッサン
 ソツギョウ
 ニュウガク
