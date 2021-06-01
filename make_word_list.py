@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import sys
-import xlrd
+from openpyxl import load_workbook
 import re
 import pykakasi
 from datetime import datetime
@@ -53,10 +53,8 @@ def main():
     # reading vocabulary database.
     # assuming the dict is "VDLJ_Ver1_0_International-Students.xlsx"
     # the first line is the header. needs to skip 1 line.
-    xls_wb = xlrd.open_workbook(opt.base_dict)
-    xls_sheet = xls_wb.sheet_by_index(1)
-    rows = xls_sheet.get_rows()
-    row = rows.__next__()
+    xls_wb = load_workbook(filename=opt.base_dict)
+    xls_sheet = xls_wb.worksheets[1]
     # read ng word list.
     ng_words = open(opt.ng_words).read().splitlines()
     ng_words = filter(lambda s: '#' not in s and len(s) > 0, ng_words)
@@ -69,11 +67,14 @@ def main():
     # start evaluation.
     wdb = {}
     kks = pykakasi.kakasi()
-    for row in rows:
+    for row in xls_sheet.iter_rows(min_row=2):
         lexeme = row[9].value
         yomi = row[11].value
         hinshi = row[12].value
         rank = row[1].value
+        # yomiがない(例:々)場合はスキップ。
+        if yomi is None:
+            continue
         # word rankのチェック
         if rank > opt.word_rank:
             continue
