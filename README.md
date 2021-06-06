@@ -79,30 +79,25 @@ optional arguments:
 
 元データは東京大学松下達彦研究室言語学習ラボの
 [日本語を読むための語彙データベース](http://www17408ui.sakura.ne.jp/tatsum/database.html)のうち、
-「日本語を勉強する人のための語彙データベース（留学生用）」(ファイル名: VDLJ_Ver1_0_International-Students.xlsx) から、
-make_word_list.py を用いて、
+「日本語を勉強する人のための語彙データベース（留学生用）」(ファイル名: VDLJ_Ver1_0_International-Students.xlsx) を元にしています。
+
+ng_word_list.txt に、
 ご時世に相応しくないと思われる単語と、
-口頭で伝えにくと思われる単語を除外しました。
+口頭で伝えにくと思われる単語を
+口頭で伝えるには抵抗がありそうな単語などを
+カタカナで列挙します。
+
+make_word_list.pyを使って辞書を作ります。
+標準出力に出るので辞書ファイルにリダイレクトしてください。
 
 ```
-% python make_word_list.py VDLJ_Ver1_0_International-Students.xlsx
+% python make_word_list.py VDLJ_Ver1_0_International-Students.xlsx > dict.txt
 ```
 
 留学生用語彙ランク3000までで約1000語用意できます。
 ランクの最大値20288で約10000語用意できます。
 リポジトリに置いてある変換済みの辞書は約10000語あります。
 簡単な語彙から並べてあるのでMを3(--nb-digits=3)にすると簡単な語彙が選ばれます。
-
-## ng_word_list.txt
-
-ご時世に相応しくない単語と
-口頭で伝えるには抵抗がありそうな単語を列挙しています。
-
-- 先頭のバージョンのフォーマット
-
-```
-date +'ver.%Y-%m-%dT%H:%M:%S'
-```
 
 ## 謝辞
 
